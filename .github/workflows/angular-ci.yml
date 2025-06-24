@@ -1,22 +1,22 @@
-name: Frontend CI
+name: Angular CI
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'frontend/**'
-      - '.github/workflows/frontend-ci.yml'
+      - 'angular/**'
+      - '.github/workflows/angular-ci.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'frontend/**'
+      - 'angular/**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./angular
         
     steps:
     - uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: 24
         cache: 'npm'
-        cache-dependency-path: frontend/package-lock.json
+        cache-dependency-path: angular/package-lock.json
 
     - name: Install dependencies
       run: npm ci
